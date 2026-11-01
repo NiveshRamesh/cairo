@@ -1,14 +1,14 @@
 # syntax=docker/dockerfile:1
 # Tip: pin base images by digest (python:3.13-slim@sha256:...) and let Dependabot bump them.
 
-FROM python:3.13-slim AS build
+FROM python:3.15-slim AS build
 WORKDIR /build
 COPY requirements.txt .
 RUN python -m venv /opt/venv \
  && /opt/venv/bin/pip install --no-cache-dir -r requirements.txt \
  && /opt/venv/bin/pip uninstall -y pip
 
-FROM python:3.13-slim
+FROM python:3.15-slim
 RUN groupadd --gid 10001 app \
  && useradd --uid 10001 --gid 10001 --no-create-home --shell /usr/sbin/nologin app \
  && python -m pip uninstall -y pip
