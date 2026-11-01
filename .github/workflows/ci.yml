@@ -32,6 +32,23 @@ jobs:
       codeql-languages: '["python"]'
     secrets: inherit
 
+  # Code quality + Sonar security findings. PRs get the quality gate on new code;
+  # develop / release builds keep the long-lived analysis that Sonar reports use.
+  sonar:
+    if: >-
+      github.event_name == 'pull_request' || github.ref_name == 'develop' ||
+      startsWith(github.ref_name, 'release/')
+    uses: NiveshRamesh/ci-templates/.github/workflows/sonar.yml@v1
+    permissions:
+      contents: read
+      pull-requests: read
+    with:
+      language: python
+      language-version: "3.13"
+      install-command: pip install -r requirements.txt -r requirements-dev.txt
+      test-command: pytest -q --cov=app --cov-report=xml --cov-fail-under=80
+    secrets: inherit
+
   build-deploy:
     if: github.event_name != 'pull_request'
     uses: NiveshRamesh/ci-templates/.github/workflows/build-deploy.yml@v1
