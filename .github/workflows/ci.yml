@@ -30,7 +30,25 @@ jobs:
       install-command: pip install -r requirements.txt -r requirements-dev.txt
       test-command: pytest -q --cov=app --cov-fail-under=80
       codeql-languages: '["python"]'
-    secrets: inherit
+
+  # Code quality + Sonar security findings. PRs get the quality gate on new code;
+  # develop / release builds keep the long-lived analysis that Sonar reports use.
+  sonar:
+    if: >-
+      github.event_name == 'pull_request' || github.ref_name == 'develop' ||
+      startsWith(github.ref_name, 'release/')
+    uses: NiveshRamesh/ci-templates/.github/workflows/sonar.yml@v1
+    permissions:
+      contents: read
+      pull-requests: read
+    with:
+      language: python
+      language-version: "3.13"
+      install-command: pip install -r requirements.txt -r requirements-dev.txt
+      test-command: pytest -q --cov=app --cov-report=xml --cov-fail-under=80
+    secrets:
+      SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
 
   build-deploy:
     if: github.event_name != 'pull_request'
@@ -44,4 +62,9 @@ jobs:
     with:
       app-port: 8080
       health-path: /health
-    secrets: inherit
+    secrets:
+      CICD_APP_CLIENT_ID: ${{ secrets.CICD_APP_CLIENT_ID }}
+      CICD_APP_PRIVATE_KEY: ${{ secrets.CICD_APP_PRIVATE_KEY }}
+      JIRA_URL: ${{ secrets.JIRA_URL }}
+      JIRA_USERNAME: ${{ secrets.JIRA_USERNAME }}
+      JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
