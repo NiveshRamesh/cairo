@@ -5,30 +5,30 @@
 # vulnerabilities:
 #   - id: CVE-2026-12345
 #     paths: ["requirements.txt"]          # optional: limit to one file
-#     expired_at: 2026-12-31
+#     expired_at: 2026-11-01
 #     statement: "No fix upstream; not reachable from our code. Owner: jane.doe. Ticket: SEC-42"
 vulnerabilities:
   - id: CVE-2021-33503
-    expired_at: 2026-12-31
+    expired_at: 2026-11-01
     statement: "Gate test only (DSO-3). Owner: NiveshRamesh."
   - id: CVE-2023-43804
-    expired_at: 2026-12-31
+    expired_at: 2026-11-01
     statement: "Gate test only (DSO-3). Owner: NiveshRamesh."
   - id: CVE-2025-66418
-    expired_at: 2026-12-31
+    expired_at: 2026-11-01
     statement: "Gate test only (DSO-3). Owner: NiveshRamesh."
   - id: CVE-2025-66471
-    expired_at: 2026-12-31
+    expired_at: 2026-11-01
     statement: "Gate test only (DSO-3). Owner: NiveshRamesh."
   - id: CVE-2026-21441
-    expired_at: 2026-12-31
+    expired_at: 2026-11-01
     statement: "Gate test only (DSO-3). Owner: NiveshRamesh."
   - id: CVE-2026-44431
-    expired_at: 2026-12-31
+    expired_at: 2026-11-01
     statement: "Gate test only (DSO-3). Owner: NiveshRamesh."
   - id: CVE-2026-97687
-    expired_at: 2026-12-31
+    expired_at: 2026-11-01
     statement: "Gate test only (DSO-3). Owner: NiveshRamesh."
   - id: CVE-2026-97689
-    expired_at: 2026-12-31
+    expired_at: 2026-11-01
     statement: "Gate test only (DSO-3). Owner: NiveshRamesh."
