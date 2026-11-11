@@ -7,4 +7,11 @@
 #     paths: ["requirements.txt"]          # optional: limit to one file
 #     expired_at: 2026-12-31
 #     statement: "No fix upstream; not reachable from our code. Owner: jane.doe. Ticket: SEC-42"
-vulnerabilities: []
+vulnerabilities:
+  # TEMPORARY - Jira close/reopen test. Remove in the follow-up PR.
+  - id: CVE-2026-76844
+    expired_at: 2026-11-18
+    statement: "zlib1g; waiting for the python:3.13-slim rebuild. Owner: NiveshRamesh. Ticket: KAN-4"
+  - id: CVE-2026-85091
+    expired_at: 2026-11-18
+    statement: "zlib1g; waiting for the python:3.13-slim rebuild. Owner: NiveshRamesh. Ticket: KAN-4"
