@@ -1,3 +1,4 @@
+# PR-02 test: branch name without a Jira ID
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel, Field
 
