@@ -3,7 +3,7 @@
 # After expired_at the finding blocks again. Changes to this file need a security code owner.
 vulnerabilities:
   - id: CVE-2021-33503
-    expired_at: 2026-12-31
+    expired_at: 2026-11-01
     statement: "Test PR-08: urllib3 pinned for legacy client. Owner: nivesh. Ticket: DSO-107"
   - id: CVE-2023-43804
     expired_at: 2026-12-31
