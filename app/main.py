@@ -3,7 +3,9 @@ from fastapi import FastAPI, Request
 # Interactive docs are disabled so the public surface is only what we serve on purpose.
 app = FastAPI(title="cairo", docs_url=None, redoc_url=None, openapi_url=None)
 from app.notes import router as notes_router  # noqa: E402
+from app.tools import router as tools_router  # noqa: E402
 
+app.include_router(tools_router)
 app.include_router(notes_router)
 
 SECURITY_HEADERS = {
